@@ -1,10 +1,27 @@
 [gd_scene format=3 uid="uid://cio5lt711exyp"]
 
+[ext_resource type="PackedScene" uid="uid://cpsthuq6xyyfr" path="res://Scene/player.tscn" id="1_f6udf"]
+[ext_resource type="PackedScene" uid="uid://dwws58wib3xru" path="res://Scene/platform.tscn" id="2_sblpm"]
+
 [node name="Main" type="Node2D" unique_id=1778091553]
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=622387107]
-offset_left = 200.0
-offset_top = 300.0
-offset_right = 400.0
-offset_bottom = 350.0
-color = Color(0, 1, 0, 1)
+[node name="Player" parent="." unique_id=726204177 instance=ExtResource("1_f6udf")]
+position = Vector2(305, 256)
+
+[node name="Platform" parent="." unique_id=1104610977 instance=ExtResource("2_sblpm")]
+position = Vector2(245, 357)
+
+[node name="Platform2" parent="." unique_id=422930399 instance=ExtResource("2_sblpm")]
+position = Vector2(468, 238)
+
+[node name="Platform3" parent="." unique_id=1182419416 instance=ExtResource("2_sblpm")]
+position = Vector2(582, 35)
+
+[node name="Platform4" parent="." unique_id=778975132 instance=ExtResource("2_sblpm")]
+position = Vector2(74, 272)
+
+[node name="Platform5" parent="." unique_id=558262719 instance=ExtResource("2_sblpm")]
+position = Vector2(193, 146)
+
+[node name="Platform6" parent="." unique_id=142515781 instance=ExtResource("2_sblpm")]
+position = Vector2(242, 30)
