@@ -9,31 +9,16 @@
 position = Vector2(305, 256)
 
 [node name="Platform" parent="." unique_id=1104610977 instance=ExtResource("2_sblpm")]
-position = Vector2(245, 357)
+position = Vector2(480, 200)
 
-[node name="Platform2" parent="." unique_id=422930399 instance=ExtResource("2_sblpm")]
-position = Vector2(468, 238)
+[node name="Platform2" parent="." unique_id=49758276 instance=ExtResource("2_sblpm")]
+position = Vector2(400, 500)
 
-[node name="Platform3" parent="." unique_id=1182419416 instance=ExtResource("2_sblpm")]
-position = Vector2(582, 35)
+[node name="Platform3" parent="." unique_id=371025786 instance=ExtResource("2_sblpm")]
+position = Vector2(500, 400)
 
-[node name="Platform4" parent="." unique_id=778975132 instance=ExtResource("2_sblpm")]
-position = Vector2(74, 272)
+[node name="Platform4" parent="." unique_id=394067906 instance=ExtResource("2_sblpm")]
+position = Vector2(350, 300)
 
-[node name="Platform5" parent="." unique_id=558262719 instance=ExtResource("2_sblpm")]
-position = Vector2(193, 146)
-
-[node name="Platform6" parent="." unique_id=142515781 instance=ExtResource("2_sblpm")]
-position = Vector2(242, 30)
-
-[node name="Platform7" parent="." unique_id=17244349 instance=ExtResource("2_sblpm")]
-position = Vector2(69, -74)
-
-[node name="Platform8" parent="." unique_id=1091168787 instance=ExtResource("2_sblpm")]
-position = Vector2(296, -194)
-
-[node name="Platform9" parent="." unique_id=1747552018 instance=ExtResource("2_sblpm")]
-position = Vector2(561, -292)
-
-[node name="Platform10" parent="." unique_id=301118352 instance=ExtResource("2_sblpm")]
-position = Vector2(55, -304)
+[node name="Platform5" parent="." unique_id=662194779 instance=ExtResource("2_sblpm")]
+position = Vector2(300, 100)
