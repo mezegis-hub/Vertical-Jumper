@@ -25,3 +25,15 @@ position = Vector2(193, 146)
 
 [node name="Platform6" parent="." unique_id=142515781 instance=ExtResource("2_sblpm")]
 position = Vector2(242, 30)
+
+[node name="Platform7" parent="." unique_id=17244349 instance=ExtResource("2_sblpm")]
+position = Vector2(69, -74)
+
+[node name="Platform8" parent="." unique_id=1091168787 instance=ExtResource("2_sblpm")]
+position = Vector2(296, -194)
+
+[node name="Platform9" parent="." unique_id=1747552018 instance=ExtResource("2_sblpm")]
+position = Vector2(561, -292)
+
+[node name="Platform10" parent="." unique_id=301118352 instance=ExtResource("2_sblpm")]
+position = Vector2(55, -304)
