@@ -5,6 +5,7 @@ const SPEED = 300.0
 const GRAVITY = 1200.0
 const JUMP_VELOCITY = -600.0
 
+const JUMP_CUT_MULTIPLIER = 0.3
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -14,6 +15,10 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+	
+	# Short Press Cutoff: If the player releases the button early while moving upward
+	if Input.is_action_just_released("ui_accept") and velocity.y < 0:
+		velocity.y *= JUMP_CUT_MULTIPLIER
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
