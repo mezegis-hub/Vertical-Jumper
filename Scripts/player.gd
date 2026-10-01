@@ -7,12 +7,16 @@ const JUMP_VELOCITY = -600.0
 
 const JUMP_CUT_MULTIPLIER = 0.3
 
+
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
-	if not is_on_floor():
+	if not is_on_floor(): 	
 		velocity.y += GRAVITY * delta
 
 	# Handle jump.
+	#if is_on_floor():
+			#velocity.y = JUMP_VELOCITY
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 	
@@ -27,5 +31,11 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		
 
 	move_and_slide()
+	
+	if position.x < -400:
+		position.x = 400
+	if position.x > 400:
+		position.x = -400
