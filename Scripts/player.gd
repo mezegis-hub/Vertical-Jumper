@@ -5,11 +5,21 @@ const SPEED = 300.0
 const GRAVITY = 1200.0
 const JUMP_VELOCITY = -600.0
 
+const FALL_DISTANCE= 1000.0
+
 const JUMP_CUT_MULTIPLIER = 0.3
 
+var highest_y: float
+var game_over := false
+
+func _ready() -> void:
+		highest_y = global_position.y
 
 
 func _physics_process(delta: float) -> void:
+	
+	if game_over:
+		return
 	# Add the gravity.
 	if not is_on_floor(): 	
 		velocity.y += GRAVITY * delta
@@ -17,6 +27,7 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	#if is_on_floor():
 			#velocity.y = JUMP_VELOCITY
+			
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 	
@@ -34,6 +45,15 @@ func _physics_process(delta: float) -> void:
 		
 
 	move_and_slide()
+	
+	#high point reach
+	if global_position.y < highest_y:
+		highest_y = global_position.y
+		
+	#fall detection
+	if global_position.y > highest_y + FALL_DISTANCE:
+		game_over = true
+		velocity = Vector2.ZERO
 	
 	if position.x < -400:
 		position.x = 400
