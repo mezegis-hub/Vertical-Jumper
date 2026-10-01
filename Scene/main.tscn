@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cpsthuq6xyyfr" path="res://Scene/player.tscn" id="1_f6udf"]
 [ext_resource type="PackedScene" uid="uid://dwws58wib3xru" path="res://Scene/platform.tscn" id="2_sblpm"]
 [ext_resource type="Script" uid="uid://ck5ek7r3u31fx" path="res://Scripts/platform_generator.gd" id="3_r34rm"]
+[ext_resource type="Script" uid="uid://bqdoqdkprn4xl" path="res://Scripts/label.gd" id="4_2wwxx"]
 
 [node name="Main" type="Node2D" unique_id=1778091553]
 
@@ -13,3 +14,13 @@ position = Vector2(0, -100)
 script = ExtResource("3_r34rm")
 platform_scene = ExtResource("2_sblpm")
 player = NodePath("../Player")
+
+[node name="Canvas" type="CanvasLayer" parent="." unique_id=361811508]
+
+[node name="High Score" type="Label" parent="Canvas" unique_id=160255452 node_paths=PackedStringArray("player_node")]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 25
+script = ExtResource("4_2wwxx")
+player_node = NodePath("../../Player")
