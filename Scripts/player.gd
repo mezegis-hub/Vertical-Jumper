@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+signal died
 
 const SPEED = 300.0
 const GRAVITY = 1200.0
@@ -54,6 +55,7 @@ func _physics_process(delta: float) -> void:
 	if global_position.y > highest_y + FALL_DISTANCE:
 		game_over = true
 		velocity = Vector2.ZERO
+		died.emit()
 	
 	if position.x < -400:
 		position.x = 400

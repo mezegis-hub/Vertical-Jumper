@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://cio5lt711exyp"]
 
+[ext_resource type="Script" uid="uid://mxm7lgi6a3w6" path="res://Scripts/main.gd" id="1_3amdw"]
 [ext_resource type="PackedScene" uid="uid://cpsthuq6xyyfr" path="res://Scene/player.tscn" id="1_f6udf"]
 [ext_resource type="PackedScene" uid="uid://dwws58wib3xru" path="res://Scene/platform.tscn" id="2_sblpm"]
 [ext_resource type="Script" uid="uid://ck5ek7r3u31fx" path="res://Scripts/platform_generator.gd" id="3_r34rm"]
 [ext_resource type="Script" uid="uid://bqdoqdkprn4xl" path="res://Scripts/label.gd" id="4_2wwxx"]
 
 [node name="Main" type="Node2D" unique_id=1778091553]
+script = ExtResource("1_3amdw")
 
 [node name="Player" parent="." unique_id=726204177 instance=ExtResource("1_f6udf")]
 position = Vector2(0, -100)
@@ -24,3 +26,42 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 25
 script = ExtResource("4_2wwxx")
 player_node = NodePath("../../Player")
+
+[node name="GameOverPanel" type="Panel" parent="Canvas" unique_id=1337548393]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GaveOver" type="Label" parent="Canvas/GameOverPanel" unique_id=447044807]
+layout_mode = 0
+offset_left = 314.0
+offset_top = 142.0
+offset_right = 406.0
+offset_bottom = 165.0
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="Canvas/GameOverPanel" unique_id=970027116 node_paths=PackedStringArray("player_node")]
+layout_mode = 0
+offset_left = 340.0
+offset_top = 173.0
+offset_right = 380.0
+offset_bottom = 196.0
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_2wwxx")
+player_node = NodePath("../../../Player")
+
+[node name="Restart" type="Button" parent="Canvas/GameOverPanel" unique_id=1998824055]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 203.0
+offset_right = 392.0
+offset_bottom = 239.0
+text = "RESTART"
+
+[connection signal="died" from="Player" to="." method="_on_player_died"]
+[connection signal="pressed" from="Canvas/GameOverPanel/Restart" to="." method="_on_restart_pressed"]
