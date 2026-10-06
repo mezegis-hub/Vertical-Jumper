@@ -6,8 +6,12 @@ extends Node2D
 
 
 
+
+
 const INITIAL_PLATFORM_COUNT = 1
-const GENERATION_DISTANCE = 1500.0
+#const GENERATION_DISTANCE = 1500.0
+const GENERATION_AHEAD = 1500.0
+const DELETE_BEHIND = 1000.0
 
 const MIN_VERTICAL_DISTANCE = 80.0
 const MAX_VERTICAL_DISTANCE = 120.0
@@ -26,8 +30,10 @@ func _ready() -> void:
 		generate_platform()
 		
 func _process(_delta: float) -> void:
-	if player.position.y < current_position.y + GENERATION_DISTANCE:
-		generate_platform()
+	generate_until_height(player.position.y)
+	#if player.position.y < current_position.y + GENERATION_DISTANCE:
+		#generate_platform()
+	delete_old_platforms(player.position.y)
 		
 func generate_platform() -> void:
 	var platform = platform_scene.instantiate()
@@ -79,3 +85,12 @@ func generate_platform() -> void:
 		)		
 
 	current_position.y -= random_y	
+
+func generate_until_height(player_y: float) -> void:
+	while current_position.y > player_y - GENERATION_AHEAD:
+		generate_platform()
+		
+func delete_old_platforms(player_y: float) -> void:
+	for platform in get_children():
+		if platform.position.y > player_y + DELETE_BEHIND:
+			platform.queue_free()
