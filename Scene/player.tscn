@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ublff"]
 size = Vector2(40, 50)
 
-[node name="Player" type="CharacterBody2D" unique_id=726204177]
+[node name="Player" type="CharacterBody2D" unique_id=726204177 groups=["player"]]
 script = ExtResource("1_kelma")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1527247301]
@@ -17,10 +17,3 @@ color = Color(1, 1, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=117434941]
 shape = SubResource("RectangleShape2D_ublff")
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1371268473]
-offset = Vector2(0, -300)
-limit_left = -460
-limit_right = 460
-limit_bottom = 500
-position_smoothing_enabled = true

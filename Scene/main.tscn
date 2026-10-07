@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://mxm7lgi6a3w6" path="res://Scripts/main.gd" id="1_3amdw"]
 [ext_resource type="PackedScene" uid="uid://cpsthuq6xyyfr" path="res://Scene/player.tscn" id="1_f6udf"]
 [ext_resource type="PackedScene" uid="uid://dwws58wib3xru" path="res://Scene/platform.tscn" id="2_sblpm"]
+[ext_resource type="PackedScene" uid="uid://b57l3pe3gltdr" path="res://Scene/camera_2d.tscn" id="3_1xcnr"]
 [ext_resource type="Script" uid="uid://ck5ek7r3u31fx" path="res://Scripts/platform_generator.gd" id="3_r34rm"]
 [ext_resource type="Script" uid="uid://bqdoqdkprn4xl" path="res://Scripts/label.gd" id="4_2wwxx"]
 
@@ -31,6 +32,9 @@ script = ExtResource("1_3amdw")
 
 [node name="Player" parent="." unique_id=726204177 instance=ExtResource("1_f6udf")]
 position = Vector2(0, -100)
+
+[node name="Camera2D" parent="." unique_id=1361254878 instance=ExtResource("3_1xcnr")]
+position = Vector2(0, -300)
 
 [node name="PlatformGenerator" type="Node2D" parent="." unique_id=482221497 node_paths=PackedStringArray("player")]
 script = ExtResource("3_r34rm")
@@ -98,4 +102,5 @@ text = "RESTART"
 flat = true
 
 [connection signal="died" from="Player" to="." method="_on_player_died"]
+[connection signal="died" from="Player" to="Camera2D" method="_on_player_died"]
 [connection signal="pressed" from="Canvas/GameOverPanel/GameOverCentre/GameOverBox/Restart" to="." method="_on_restart_pressed"]
