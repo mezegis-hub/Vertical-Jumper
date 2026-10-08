@@ -1,7 +1,7 @@
 extends Camera2D
 
 @export var scroll_speed := 50.0
-@export var max_scroll_speed :=50.0
+@export var max_scroll_speed := 150.0
 @export var speed_increase_height := 5000.0
 
 @onready var player := get_tree().get_first_node_in_group("player")

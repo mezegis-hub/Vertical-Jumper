@@ -1,5 +1,6 @@
 extends AnimatableBody2D
 
+#region variables
 #for moving platforms
 @export var is_moving := false
 @export var move_speed := 100.0
@@ -44,7 +45,7 @@ var fall_start_y := 0.0
 #shrinking platform vars
 var shrink_triggered := false
 var original_width := 0.0
-
+#endregion 
 func _ready() -> void:
 	$CollisionShape2D.shape = $CollisionShape2D.shape.duplicate()
 	
