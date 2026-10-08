@@ -171,45 +171,45 @@ func get_difficulty() -> float:
 	return clamp(difficulty, 0.0, MAX_DIFFICULTY)
 	
 func get_platform_types() -> String:
-	return "falling"
-	#var height = abs(player.position.y)
-	#var roll = randf()
-	#
-	#if height < MOVING_START_HEIGHT:
-		#return "normal"
-	#
-	#if height < TRICK_START_HEIGHT:
-		#if roll < 0.9:
-			#return "normal"
-		#else:
-			#return "moving"
-		#
-	#if height < FALLING_START_HEIGHT:
-		#if roll <0.7:
-			#return "normal"
-		#if roll < 0.9:
-			#return "moving"
-		#else:
-			#return "trick"
-		#
-	#if height < SHRINKING_START_HEIGHT:
-		#if roll < 0.6:
-			#return "normal"
-		#if roll < 0.8:
-			#return "moving"
-		#if roll < 0.9:
-			#return "trick"
-		#else:
-			#return "falling"
-		#
-	#if roll < 0.5:
-		#return "normal"
-	#if roll < 0.7:
-		#return "moving"
-	#if roll < 0.8:
-		#return "trick"
-	#if roll < 0.9:
-		#return "falling"
-	#else:	
-		#return "shrinking"
+
+	var height = abs(player.position.y)
+	var roll = randf()
+	
+	if height < MOVING_START_HEIGHT:
+		return "normal"
+	
+	if height < TRICK_START_HEIGHT:
+		if roll < 0.9:
+			return "normal"
+		else:
+			return "moving"
+		
+	if height < FALLING_START_HEIGHT:
+		if roll <0.7:
+			return "normal"
+		if roll < 0.9:
+			return "moving"
+		else:
+			return "trick"
+		
+	if height < SHRINKING_START_HEIGHT:
+		if roll < 0.6:
+			return "normal"
+		if roll < 0.8:
+			return "moving"
+		if roll < 0.9:
+			return "trick"
+		else:
+			return "falling"
+		
+	if roll < 0.5:
+		return "normal"
+	if roll < 0.7:
+		return "moving"
+	if roll < 0.8:
+		return "trick"
+	if roll < 0.9:
+		return "falling"
+	else:	
+		return "shrinking"
 	
