@@ -5,9 +5,6 @@ extends Node2D
 @export var player: CharacterBody2D
 
 
-
-
-
 const INITIAL_PLATFORM_COUNT = 1
 #const GENERATION_DISTANCE = 1500.0
 #onst GENERATION_AHEAD = 500.0
@@ -16,7 +13,7 @@ const MAX_PLATFORMS_ABOVE = 12
 const MIN_PLATFORMS_ABOVE = 5
 
 const MAX_PLATFORMS_BELOW = 10
-const MIN_PLATFORMS_BELOW = 2
+const MIN_PLATFORMS_BELOW = 5
 
 const MIN_VERTICAL_DISTANCE = 80.0
 const MAX_VERTICAL_DISTANCE = 150.0
@@ -26,6 +23,11 @@ const MAX_HORIZONTAL_DISTANCE = 250.0
 
 const DIFFICULTY_DISTANCE = 3000.0
 const MAX_DIFFICULTY = 1.0
+
+const MOVING_START_HEIGHT = 100.0
+const TRICK_START_HEIGHT = 200.0
+const FALLING_START_HEIGHT = 300.0
+const SHRINKING_START_HEIGHT = 400.0
 
 const SCREEN_LEFT = -300.0
 const SCREEN_RIGHT = 300.0
@@ -73,7 +75,13 @@ func generate_platforms_above(target_count: int) -> void:
 func generate_platform() -> void:
 	var platform = platform_scene.instantiate()
 	add_child(platform)
-
+	var platform_type = get_platform_types()
+	
+	platform.is_moving = platform_type == "moving"
+	platform.is_trick = platform_type == "trick"
+	platform.is_falling = platform_type == "falling"
+	platform.is_shrinking = platform_type == "shrinking"
+	
 	platform.position = current_position
 
 	var difficulty = get_difficulty()
@@ -161,3 +169,47 @@ func delete_platforms_below(target_count: int) -> void:
 func get_difficulty() -> float:
 	var difficulty = abs(player.position.y) / DIFFICULTY_DISTANCE
 	return clamp(difficulty, 0.0, MAX_DIFFICULTY)
+	
+func get_platform_types() -> String:
+	return "falling"
+	#var height = abs(player.position.y)
+	#var roll = randf()
+	#
+	#if height < MOVING_START_HEIGHT:
+		#return "normal"
+	#
+	#if height < TRICK_START_HEIGHT:
+		#if roll < 0.9:
+			#return "normal"
+		#else:
+			#return "moving"
+		#
+	#if height < FALLING_START_HEIGHT:
+		#if roll <0.7:
+			#return "normal"
+		#if roll < 0.9:
+			#return "moving"
+		#else:
+			#return "trick"
+		#
+	#if height < SHRINKING_START_HEIGHT:
+		#if roll < 0.6:
+			#return "normal"
+		#if roll < 0.8:
+			#return "moving"
+		#if roll < 0.9:
+			#return "trick"
+		#else:
+			#return "falling"
+		#
+	#if roll < 0.5:
+		#return "normal"
+	#if roll < 0.7:
+		#return "moving"
+	#if roll < 0.8:
+		#return "trick"
+	#if roll < 0.9:
+		#return "falling"
+	#else:	
+		#return "shrinking"
+	

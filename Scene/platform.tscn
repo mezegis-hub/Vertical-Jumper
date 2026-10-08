@@ -1,9 +1,14 @@
 [gd_scene format=3 uid="uid://dwws58wib3xru"]
 
+[ext_resource type="Script" uid="uid://cngqdppufv3kp" path="res://Scripts/platform.gd" id="1_p7ult"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fgsi0"]
 size = Vector2(140, 20)
 
-[node name="Platform" type="StaticBody2D" unique_id=1104610977]
+[node name="Platform" type="AnimatableBody2D" unique_id=513171392 groups=["platform"]]
+sync_to_physics = false
+script = ExtResource("1_p7ult")
+is_falling = true
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1574051339]
 offset_left = -70.0
