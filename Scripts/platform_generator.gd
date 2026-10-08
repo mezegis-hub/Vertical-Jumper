@@ -24,10 +24,10 @@ const MAX_HORIZONTAL_DISTANCE = 250.0
 const DIFFICULTY_DISTANCE = 3000.0
 const MAX_DIFFICULTY = 1.0
 
-const MOVING_START_HEIGHT = 100.0
-const TRICK_START_HEIGHT = 200.0
-const FALLING_START_HEIGHT = 300.0
-const SHRINKING_START_HEIGHT = 400.0
+const MOVING_START_HEIGHT = 1000.0
+const TRICK_START_HEIGHT = 2000.0
+const FALLING_START_HEIGHT = 3000.0
+const SHRINKING_START_HEIGHT = 4000.0
 
 const SCREEN_LEFT = -300.0
 const SCREEN_RIGHT = 300.0
@@ -171,7 +171,6 @@ func get_difficulty() -> float:
 	return clamp(difficulty, 0.0, MAX_DIFFICULTY)
 	
 func get_platform_types() -> String:
-
 	var height = abs(player.position.y)
 	var roll = randf()
 	

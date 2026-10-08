@@ -16,8 +16,11 @@ var game_over := false
 
 var current_platform = null
 
+@onready var camera = get_tree().get_first_node_in_group("camera")
+
 func _ready() -> void:
 		highest_y = global_position.y
+		print("CAMERA FOUND: ", camera)
 
 
 func _physics_process(delta: float) -> void:
@@ -79,10 +82,15 @@ func _physics_process(delta: float) -> void:
 		highest_y = global_position.y
 		
 	#fall detection
-	if global_position.y > highest_y + FALL_DISTANCE:
+	#if global_position.y > highest_y + FALL_DISTANCE:
+		#game_over = true
+		#velocity = Vector2.ZERO
+		#died.emit()
+	if camera != null and global_position.y > camera.global_position.y + FALL_DISTANCE:
 		game_over = true
 		velocity = Vector2.ZERO
 		died.emit()
+	
 	
 	if position.x < -400:
 		position.x = 400
